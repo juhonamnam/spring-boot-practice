@@ -27,16 +27,16 @@ import com.todolist.service.TodoService;
 public class TodoController {
 
 	@Autowired
-	private TodoService postService;
+	private TodoService todoService;
 
-	@GetMapping("/retrievePost")
-	public ResponseEntity<CommonResponse<List<Todo>>> retrievePost() {
+	@GetMapping("/retrieveTodo")
+	public ResponseEntity<CommonResponse<List<Todo>>> retrieveTodo() {
 		CommonResponse<List<Todo>> response;
 		try {
-			List<Todo> posts = postService.retrievePost();
+			List<Todo> todos = todoService.retrieveTodo();
 			response = new CommonResponseSuccess<List<Todo>>();
 			response.setOk(true);
-			response.setData(posts);
+			response.setData(todos);
 		} catch (Exception e) {
 			response = new CommonResponseFail<List<Todo>>();
 			response.setOk(false);
@@ -45,14 +45,14 @@ public class TodoController {
 		return new ResponseEntity<CommonResponse<List<Todo>>>(response, HttpStatus.OK);
 	}
 
-	@PostMapping("/createPost")
-	public ResponseEntity<CommonResponse<Todo>> createPost(@RequestBody Todo post) {
+	@PostMapping("/createTodo")
+	public ResponseEntity<CommonResponse<Todo>> createTodo(@RequestBody Todo todo) {
 		CommonResponse<Todo> response;
 		try {
-			Todo addedPost = postService.createPost(post);
+			Todo createdTodo = todoService.createTodo(todo);
 			response = new CommonResponseSuccess<Todo>();
 			response.setOk(true);
-			response.setData(addedPost);
+			response.setData(createdTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
 			response.setOk(false);
@@ -61,14 +61,14 @@ public class TodoController {
 		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
 	}
 
-	@PutMapping("/modifyPost/{id}")
-	public ResponseEntity<CommonResponse<Todo>> modifyPost(@PathVariable("id") int id, @RequestBody Todo post) {
+	@PutMapping("/modifyTodo/{id}")
+	public ResponseEntity<CommonResponse<Todo>> modifyTodo(@PathVariable("id") int id, @RequestBody Todo todo) {
 		CommonResponse<Todo> response;
 		try {
-			Todo modifiedPost = postService.modifyPost(id, post);
+			Todo modifiedTodo = todoService.modifyTodo(id, todo);
 			response = new CommonResponseSuccess<Todo>();
 			response.setOk(true);
-			response.setData(modifiedPost);
+			response.setData(modifiedTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
 			response.setOk(false);
@@ -77,14 +77,14 @@ public class TodoController {
 		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deletePost/{id}")
-	public ResponseEntity<CommonResponse<Todo>> deletePost(@PathVariable("id") int id) {
+	@DeleteMapping("/deleteTodo/{id}")
+	public ResponseEntity<CommonResponse<Todo>> deleteTodo(@PathVariable("id") int id) {
 		CommonResponse<Todo> response;
 		try {
-			Todo deletedPost = postService.deletePost(id);
+			Todo deletedTodo = todoService.deleteTodo(id);
 			response = new CommonResponseSuccess<Todo>();
 			response.setOk(true);
-			response.setData(deletedPost);
+			response.setData(deletedTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
 			response.setOk(false);

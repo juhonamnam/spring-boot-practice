@@ -13,34 +13,34 @@ import com.todolist.service.TodoService;
 public class TodoServiceImpl implements TodoService {
 
 	@Autowired
-	private TodoRepository postRepository;
+	private TodoRepository todoRepository;
 
 	@Override
-	public List<Todo> retrievePost() {
-		return (List<Todo>) postRepository.findAll();
+	public List<Todo> retrieveTodo() {
+		return (List<Todo>) todoRepository.findAll();
 	}
 
 	@Override
-	public Todo createPost(Todo post) {
-		return postRepository.save(post);
+	public Todo createTodo(Todo todo) {
+		return todoRepository.save(todo);
 	}
 
 	@Override
-	public Todo modifyPost(int id, Todo post) throws Exception {
-		Todo originalPost = postRepository.findById(id).orElse(null);
-		if (originalPost == null)
-			throw new Exception("Post Doesn't Exist");
-		post.setId(id);
-		return postRepository.save(post);
+	public Todo modifyTodo(int id, Todo todo) throws Exception {
+		Todo originalTodo = todoRepository.findById(id).orElse(null);
+		if (originalTodo == null)
+			throw new Exception("Invalid Todo Id");
+		todo.setId(id);
+		return todoRepository.save(todo);
 	}
 
 	@Override
-	public Todo deletePost(int id) throws Exception {
-		Todo deletablePost = postRepository.findById(id).orElse(null);
-		if (deletablePost == null)
-			throw new Exception("Post Doesn't Exist");
-		postRepository.deleteById(id);
-		return deletablePost;
+	public Todo deleteTodo(int id) throws Exception {
+		Todo deletableTodo = todoRepository.findById(id).orElse(null);
+		if (deletableTodo == null)
+			throw new Exception("Invalid Todo Id");
+		todoRepository.deleteById(id);
+		return deletableTodo;
 	}
 
 }

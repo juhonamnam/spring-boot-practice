@@ -6,12 +6,12 @@ import com.todolist.entity.Todo;
 
 public interface TodoService {
 
-	public List<Todo> retrievePost();
+	public List<Todo> retrieveTodo();
 
-	public Todo createPost(Todo post);
+	public Todo createTodo(Todo post);
 
-	public Todo modifyPost(int id, Todo post) throws Exception;
+	public Todo modifyTodo(int id, Todo post) throws Exception;
 
-	public Todo deletePost(int id) throws Exception;
+	public Todo deleteTodo(int id) throws Exception;
 
 }
