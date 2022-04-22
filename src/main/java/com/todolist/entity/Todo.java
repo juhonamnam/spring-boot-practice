@@ -18,8 +18,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "post")
-public class Post {
+@Table(name = "todo")
+public class Todo {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
