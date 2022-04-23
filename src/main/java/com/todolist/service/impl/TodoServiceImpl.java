@@ -21,16 +21,7 @@ public class TodoServiceImpl implements TodoService {
 	}
 
 	@Override
-	public Todo createTodo(Todo todo) {
-		return todoRepository.save(todo);
-	}
-
-	@Override
-	public Todo modifyTodo(int id, Todo todo) throws Exception {
-		Todo originalTodo = todoRepository.findById(id).orElse(null);
-		if (originalTodo == null)
-			throw new Exception("Invalid Todo Id");
-		todo.setId(id);
+	public Todo createTodo(Todo todo) throws Exception {
 		return todoRepository.save(todo);
 	}
 

@@ -8,9 +8,7 @@ public interface TodoService {
 
 	public List<Todo> retrieveTodo();
 
-	public Todo createTodo(Todo post);
-
-	public Todo modifyTodo(int id, Todo post) throws Exception;
+	public Todo createTodo(Todo post) throws Exception;
 
 	public Todo deleteTodo(int id) throws Exception;
 
