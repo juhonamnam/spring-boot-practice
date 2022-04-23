@@ -22,6 +22,10 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public Todo createTodo(Todo todo) throws Exception {
+		long count = todoRepository.count();
+		if (count >= 10) {
+			throw new Exception("Cannot Create More Than 10");
+		}
 		return todoRepository.save(todo);
 	}
 
