@@ -35,11 +35,9 @@ public class TodoController {
 		try {
 			List<Todo> todos = todoService.retrieveTodo();
 			response = new CommonResponseSuccess<List<Todo>>();
-			response.setOk(true);
 			response.setData(todos);
 		} catch (Exception e) {
 			response = new CommonResponseFail<List<Todo>>();
-			response.setOk(false);
 			response.setMessage(e.getMessage());
 		}
 		return new ResponseEntity<CommonResponse<List<Todo>>>(response, HttpStatus.OK);
@@ -51,11 +49,9 @@ public class TodoController {
 		try {
 			Todo createdTodo = todoService.createTodo(todo);
 			response = new CommonResponseSuccess<Todo>();
-			response.setOk(true);
 			response.setData(createdTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
-			response.setOk(false);
 			response.setMessage(e.getMessage());
 		}
 		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
@@ -67,11 +63,9 @@ public class TodoController {
 		try {
 			Todo modifiedTodo = todoService.modifyTodo(id, todo);
 			response = new CommonResponseSuccess<Todo>();
-			response.setOk(true);
 			response.setData(modifiedTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
-			response.setOk(false);
 			response.setMessage(e.getMessage());
 		}
 		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
@@ -83,11 +77,9 @@ public class TodoController {
 		try {
 			Todo deletedTodo = todoService.deleteTodo(id);
 			response = new CommonResponseSuccess<Todo>();
-			response.setOk(true);
 			response.setData(deletedTodo);
 		} catch (Exception e) {
 			response = new CommonResponseFail<Todo>();
-			response.setOk(false);
 			response.setMessage(e.getMessage());
 		}
 		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);

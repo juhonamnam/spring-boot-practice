@@ -7,14 +7,9 @@ import lombok.ToString;
 @ToString
 public class CommonResponseSuccess<T> implements CommonResponse<T> {
 
-	private boolean ok;
+	private final boolean ok = true;
 
 	private T data;
-
-	@Override
-	public void setOk(boolean ok) {
-		this.ok = ok;
-	}
 
 	@Override
 	public void setData(T data) {
