@@ -2,14 +2,14 @@ package com.todolist.service;
 
 import java.util.List;
 
-import com.todolist.entity.Todo;
+import com.todolist.entity.TodoItem;
 
 public interface TodoService {
 
-	public List<Todo> retrieveTodo();
+	public List<TodoItem> retrieveTodoList();
 
-	public Todo createTodo(Todo post) throws Exception;
+	public TodoItem createTodoItem(TodoItem todoItem) throws Exception;
 
-	public Todo deleteTodo(int id) throws Exception;
+	public TodoItem deleteTodoItem(int id) throws Exception;
 
 }

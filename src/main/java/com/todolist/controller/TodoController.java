@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.todolist.common.CommonResponse;
 import com.todolist.common.CommonResponseFail;
 import com.todolist.common.CommonResponseSuccess;
-import com.todolist.entity.Todo;
+import com.todolist.entity.TodoItem;
 import com.todolist.service.TodoService;
 
 @RestController
@@ -28,46 +28,46 @@ public class TodoController {
 	@Autowired
 	private TodoService todoService;
 
-	@GetMapping("/retrieveTodo")
-	public ResponseEntity<CommonResponse<List<Todo>>> retrieveTodo() {
-		CommonResponse<List<Todo>> response;
+	@GetMapping("/retrieveTodoList")
+	public ResponseEntity<CommonResponse<List<TodoItem>>> retrieveTodoList() {
+		CommonResponse<List<TodoItem>> response;
 		try {
-			List<Todo> todos = todoService.retrieveTodo();
-			response = new CommonResponseSuccess<List<Todo>>();
-			response.setData(todos);
+			List<TodoItem> todoList = todoService.retrieveTodoList();
+			response = new CommonResponseSuccess<List<TodoItem>>();
+			response.setData(todoList);
 		} catch (Exception e) {
-			response = new CommonResponseFail<List<Todo>>();
+			response = new CommonResponseFail<List<TodoItem>>();
 			response.setMessage(e.getMessage());
 		}
-		return new ResponseEntity<CommonResponse<List<Todo>>>(response, HttpStatus.OK);
+		return new ResponseEntity<CommonResponse<List<TodoItem>>>(response, HttpStatus.OK);
 	}
 
-	@PostMapping("/createTodo")
-	public ResponseEntity<CommonResponse<Todo>> createTodo(@RequestBody Todo todo) {
-		CommonResponse<Todo> response;
+	@PostMapping("/createTodoItem")
+	public ResponseEntity<CommonResponse<TodoItem>> createTodoItem(@RequestBody TodoItem todoItem) {
+		CommonResponse<TodoItem> response;
 		try {
-			Todo createdTodo = todoService.createTodo(todo);
-			response = new CommonResponseSuccess<Todo>();
-			response.setData(createdTodo);
+			TodoItem createdTodoItem = todoService.createTodoItem(todoItem);
+			response = new CommonResponseSuccess<TodoItem>();
+			response.setData(createdTodoItem);
 		} catch (Exception e) {
-			response = new CommonResponseFail<Todo>();
+			response = new CommonResponseFail<TodoItem>();
 			response.setMessage(e.getMessage());
 		}
-		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
+		return new ResponseEntity<CommonResponse<TodoItem>>(response, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deleteTodo/{id}")
-	public ResponseEntity<CommonResponse<Todo>> deleteTodo(@PathVariable("id") int id) {
-		CommonResponse<Todo> response;
+	@DeleteMapping("/deleteTodoItem/{id}")
+	public ResponseEntity<CommonResponse<TodoItem>> deleteTodoItem(@PathVariable("id") int id) {
+		CommonResponse<TodoItem> response;
 		try {
-			Todo deletedTodo = todoService.deleteTodo(id);
-			response = new CommonResponseSuccess<Todo>();
-			response.setData(deletedTodo);
+			TodoItem deletedTodoItem = todoService.deleteTodoItem(id);
+			response = new CommonResponseSuccess<TodoItem>();
+			response.setData(deletedTodoItem);
 		} catch (Exception e) {
-			response = new CommonResponseFail<Todo>();
+			response = new CommonResponseFail<TodoItem>();
 			response.setMessage(e.getMessage());
 		}
-		return new ResponseEntity<CommonResponse<Todo>>(response, HttpStatus.OK);
+		return new ResponseEntity<CommonResponse<TodoItem>>(response, HttpStatus.OK);
 	}
 
 }

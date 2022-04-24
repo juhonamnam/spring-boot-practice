@@ -23,7 +23,7 @@ import lombok.ToString;
 @ToString
 @Entity
 @Table(name = "todo")
-public class Todo {
+public class TodoItem {
 
 	@Id
 	@Column(name = "id", unique = true, nullable = false)
@@ -36,4 +36,5 @@ public class Todo {
 	@Column(name = "created")
 	@CreationTimestamp
 	private Timestamp created;
+
 }
