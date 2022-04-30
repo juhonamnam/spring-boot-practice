@@ -42,6 +42,20 @@ public class TodoController {
 		return new ResponseEntity<CommonResponse<List<TodoItem>>>(response, HttpStatus.OK);
 	}
 
+	@GetMapping("/retrieveTodoItem/{id}")
+	public ResponseEntity<CommonResponse<TodoItem>> retrieveTodoItem(@PathVariable("id") int id) {
+		CommonResponse<TodoItem> response;
+		try {
+			TodoItem todoItem = todoService.retrieveTodoItem(id);
+			response = new CommonResponseSuccess<TodoItem>();
+			response.setData(todoItem);
+		} catch (Exception e) {
+			response = new CommonResponseFail<TodoItem>();
+			response.setMessage(e.getMessage());
+		}
+		return new ResponseEntity<CommonResponse<TodoItem>>(response, HttpStatus.OK);
+	}
+
 	@PostMapping("/createTodoItem")
 	public ResponseEntity<CommonResponse<TodoItem>> createTodoItem(@RequestBody TodoItem todoItem) {
 		CommonResponse<TodoItem> response;

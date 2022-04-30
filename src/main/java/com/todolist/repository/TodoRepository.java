@@ -8,8 +8,8 @@ import com.todolist.entity.TodoItem;
 
 @Repository
 public interface TodoRepository extends CrudRepository<TodoItem, Integer> {
-	
+
 	@Query("SELECT COUNT(t) FROM TodoItem t")
 	long count();
-	
+
 }

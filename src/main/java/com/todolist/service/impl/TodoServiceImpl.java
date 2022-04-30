@@ -40,4 +40,12 @@ public class TodoServiceImpl implements TodoService {
 		return deletableTodoItem;
 	}
 
+	@Override
+	public TodoItem retrieveTodoItem(int id) throws Exception {
+		TodoItem todoItem = todoRepository.findById(id).orElse(null);
+		if (todoItem == null)
+			throw new Exception("Invalid Id");
+		return todoItem;
+	}
+
 }
